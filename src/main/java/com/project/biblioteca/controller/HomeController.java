@@ -9,7 +9,7 @@ public class HomeController {
 	
 	@RequestMapping("/login")
 	public String autenticacao() {
-		return "/paginaLogin";
+		return "paginaLogin";
 	}
 
 	@GetMapping("/")
