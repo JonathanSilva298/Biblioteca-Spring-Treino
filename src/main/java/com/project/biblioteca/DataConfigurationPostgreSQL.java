@@ -2,6 +2,7 @@ package com.project.biblioteca;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Properties;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.context.annotation.Bean;
@@ -27,4 +28,15 @@ public class DataConfigurationPostgreSQL {
 
 		return basicDataSource;
 	}
+	
+	@Bean
+    public Properties additionalProperties() {
+        Properties props = new Properties();
+        props.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQL95Dialect");
+        props.setProperty("hibernate.show_sql", "true");
+        props.setProperty("hibernate.hbm2ddl.auto", "update"); 
+        
+        
+        return props;
+    }
 }
