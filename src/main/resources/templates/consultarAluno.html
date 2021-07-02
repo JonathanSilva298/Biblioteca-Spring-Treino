@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>Lista de Alunos</title>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+		integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+		crossorigin="anonymous"></script>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+		integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+		integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/menu.css}" />
+</head>
+
+<body>
+	<div class="btnbackdiv">
+		<a th:href="@{/alunos/cadastrar}" class="btn btn-primary"><i
+				class="glyphicon glyphicon-arrow-left"></i>Voltar</a>
+	</div>
+	<div class="panel panel-default" style="margin: 10px">
+		<div class="panel-heading">
+			<h2 class="panel-title">Lista de Alunos</h2>
+			<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+			<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet" />
+		</div>
+		<div class="panel-body" th:switch="${alunos}">
+			<h2 th:case="null">Não existem Alunos cadastrados ainda!</h2>
+			<div th:case="*">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>RA</th>
+							<th>Nome</th>
+							<th>Email</th>
+							<th>CEP</th>
+							<th>Endereço</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="aluno : ${alunos}">
+							<td th:text="${aluno.id}"></td>
+							<td th:text="${aluno.RA}"></td>
+							<td th:text="${aluno.nome}"></td>
+							<td th:text="${aluno.email}"></td>
+							<td th:text="${aluno.CEP}"></td>
+							<td th:text="${aluno.endereco}"></td>
+							<td>
+								<div class="btn-group pull-right">
+									<a class="btn btn-sm btn-primary"
+										th:href="@{/alunos/edit/{RA}(RA=${aluno.RA})}">Editar</a>
+									<a class="delete btn btn-sm btn-danger"
+										th:href="@{/alunos/delete/{id}(id=${aluno.id})}">Excluir</a>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

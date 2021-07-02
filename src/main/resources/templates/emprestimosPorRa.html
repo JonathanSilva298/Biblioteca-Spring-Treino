@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>Empréstimos em Aberto</title>
+	<script type="text/javascript" th:src="@{/js/actions.js}"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+		integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+		crossorigin="anonymous"></script>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+		integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+		integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/menu.css}" />
+</head>
+
+<body>
+	<header th:replace="fragments/header :: menuSuperior">
+		<div>header</div>
+	</header>
+	<div class="container my-5">
+		<br />
+		<h3>Empréstimos</h3>
+		<div class="card">
+			<div class="card-body">
+				<div class="col-md-8">
+					<form action="#" th:action="@{/emprestimos/consultara}" th:object="${emprestimo}" method="post">
+						<div class="row">
+							<div class="form-group col-md-4">
+								<label for="ra" class="col-form-label">RA</label> <input type="text" th:field="*{RA}"
+									class="form-control" id="RA" placeholder="RA"> <span th:if="${#fields.hasErrors('RA')}" th:errors="*{RA}"
+									class="text-danger"> </span>
+							</div>
+						</div>
+					<input type="submit" class="btn btn-primary" value="Consulta por RA">	
+					</form>
+				</div>
+			</div>
+					<div class="panel panel-default" style="margin: 10px">
+		<div class="panel-heading">
+			<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"	rel="stylesheet" />
+			<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet" />
+		</div>
+		<div class="panel-body" th:switch="${emprestimos}">
+			<h3 th:case="null">Empréstimos não encontrados!</h3>
+			<div th:case="*">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>ISBN</th>
+							<th>RA</th>
+							<th>Data do Empréstimo</th>
+							<th>Data prevista da devolução</th>
+							<th>Data da devolução</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="emprestimo : ${emprestimos}">
+							<td th:text="${emprestimo.id}"></td>
+							<td th:text="${emprestimo.isbn}"></td>
+							<td th:text="${emprestimo.RA}"></td>
+							<td th:text="${emprestimo.dataEmprestimo}"></td>
+							<td th:text="${emprestimo.dataDevolucaoPrevista}"></td>
+							<td th:text="${emprestimo.dataDevolucao}"></td>
+							<td>
+								<div class="btn-group pull-right">
+									<a class="btn btn-sm btn-primary"
+										th:href="@{/emprestimos/devolver/{id}(id=${emprestimo.id})}">Devolver</a>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<h5 th:text="${message}" class="text-danger"></h5>
+	</div>
+		</div>
+		<!--  <h6 th:text="${message}" class="text-danger"></h6>-->
+	</div>
+	<footer th:replace="fragments/footer :: rodape">
+		<div>footer</div>
+	</footer>
+</body>
+</html>
