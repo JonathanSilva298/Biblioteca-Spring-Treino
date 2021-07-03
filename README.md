@@ -47,5 +47,5 @@ ascendente na hierarquia de controle, ou seja, da base de dados (backend) para a
 ![modelo de dominio](https://user-images.githubusercontent.com/14267502/84425324-bd55a580-abf7-11ea-99c7-f427b80fb7cc.png)
 
 ## Autenticações
-Login: jose; Senha: 123 - Role: Admin.
-Login: maria; Senha: 456 - Role: Bib,
+- Login: jose; Senha: 123 - Role: Admin.
+- Login: maria; Senha: 456 - Role: Bib.
