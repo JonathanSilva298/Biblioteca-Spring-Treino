@@ -60,6 +60,8 @@
 									class="text-danger">
 								</span>
 							</div>
+						</div>
+						<div class="row">
 							<div class="form-group col-md-20">
 								<input type="submit" class="btn btn-primary" value="Cadastrar Livro"> 
 								<a type="submit" class="btn btn-primary" th:href="@{/livros/consultar}">Lista de Livros</a> 
@@ -69,7 +71,7 @@
 				</div>
 			</div>
 		</div>
-		<h6 th:text="${message}" class="text-danger"></h6>
+		<h4 th:text="${message}" class="text-danger"></h4>
 	</div>
 	<footer th:replace="fragments/footer :: rodape">
 		<div>footer</div>
