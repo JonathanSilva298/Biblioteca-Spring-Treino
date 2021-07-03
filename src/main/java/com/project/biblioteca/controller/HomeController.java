@@ -12,7 +12,7 @@ public class HomeController {
 		return "paginaLogin";
 	}
 
-	@GetMapping("/")
+	@GetMapping("")
 	public String home() {
 		return "/paginaMenu";
 	}
