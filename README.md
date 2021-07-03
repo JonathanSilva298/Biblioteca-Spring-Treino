@@ -1,5 +1,6 @@
 ## Projeto - Sistema de Controle de Empréstimo e Devolução de Livros 
-### Objetivo Este projeto tem como objetivo implementar uma aplicação de empréstimo e devolução de livros, para se familiarizar com a plataforma de desenvolvimento web JEE Spring Boot. 
+### Objetivo 
+Este projeto tem como objetivo implementar uma aplicação de empréstimo e devolução de livros, para se familiarizar com a plataforma de desenvolvimento web JEE Spring Boot. 
 ### Processo de Desenvolvimento 
 O processo de desenvolvimento segue uma adaptação do Scrum. Cada interação tem a duração de 4 aulas. Ao final da interação o código é avaliado pelo time junto com o professor na 
 atividade de revisão da sprint. Em seguida a reunião de restrospectiva do sprint é realizada pelo grupo e uma ata é publicada no Teams.  
@@ -44,3 +45,7 @@ de usuário com poucos efeitos colaterais. A arquitetura selecionada para atende
 ascendente na hierarquia de controle, ou seja, da base de dados (backend) para a interface de interação homem máquina (frontend). 
 ### Modelo de Domínio 
 ![modelo de dominio](https://user-images.githubusercontent.com/14267502/84425324-bd55a580-abf7-11ea-99c7-f427b80fb7cc.png)
+
+##Autenticações
+Login: jose; Senha: 123 - Role: Admin.
+Login: maria; Senha: 456 - Role: Bib,
